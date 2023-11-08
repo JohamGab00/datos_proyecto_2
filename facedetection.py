@@ -25,6 +25,8 @@ def commit_and_push(repo_path, file_path):
     try:
         repo = git.Repo(repo_path)
         repo.git.add(file_path)
+
+        # Realizar el commit incluso si no hay cambios
         repo.git.commit('-m', 'Agregar emotions_detected.csv')
         repo.git.push()
         print("Archivo emotions_detected.csv agregado al repositorio.")
@@ -107,3 +109,4 @@ while True:
 Emotions_File.close()
 cap.release()
 cv2.destroyAllWindows()
+
