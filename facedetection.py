@@ -19,6 +19,7 @@ import datetime
 import time
 import tflite_runtime.interpreter as tflite
 import git
+import os
 
 def commit_and_push(repo_path, file_path):
     try:
@@ -27,6 +28,15 @@ def commit_and_push(repo_path, file_path):
         repo.git.commit('-m', 'Agregar emotions_detected.csv')
         repo.git.push()
         print("Archivo emotions_detected.csv agregado al repositorio.")
+
+        # Eliminar el archivo localmente después del commit y push
+        local_file_path = os.path.join(repo_path, file_path)
+        if os.path.exists(local_file_path):
+            os.remove(local_file_path)
+            print(f"Archivo {file_path} eliminado localmente.")
+        else:
+            print(f"El archivo {file_path} no existe localmente.")
+
     except Exception as e:
         print("Error al realizar el commit y push:", str(e))
 
