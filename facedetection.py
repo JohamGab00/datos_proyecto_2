@@ -84,12 +84,11 @@ while True:
 
     elif data_content == "detener":
         # Detener el código
-        break
-
         # Realizar commit y push al repositorio
         repo_path = "/home/joham/Desktop/proyecto_2/datos_proyecto_2"  # Coloca tu ruta de repositorio
         file_path = "emotions_detected.csv"
         commit_and_push(repo_path, file_path)
+        break
 
     key = cv2.waitKey(1)
     if key == 27:  # Si se presiona la tecla Esc (27 en ASCII)
